@@ -1,11 +1,11 @@
 import DefaultLogo from './components/defaultLogo';
-import Header from './components/text/header';
+import Text from './components/text/text';
 
 function App() {
   return (
     <div className='main'>
       <DefaultLogo />
-      <Header text='hi'/>
+      <Text text='hi'/>
     </div>
   );
 }
