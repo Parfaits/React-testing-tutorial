@@ -1,6 +1,6 @@
 function Paragraph(props) {
     return (
-        <p>
+        <p role="dialog" aria-label="paragraph">
             {props.text}
         </p>
     );

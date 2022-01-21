@@ -2,7 +2,7 @@ import Paragraph from "./paragraph";
 
 function Text(props) {
     return (
-        <div role='dialog' className="text">
+        <div role='dialog' aria-label="text" className="text">
             <Paragraph text={props.text}/>
         </div>
     );
