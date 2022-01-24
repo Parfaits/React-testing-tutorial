@@ -1,6 +1,6 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import ReactDOM from 'react-dom';
+import renderer from 'react-test-renderer';
 
 import Button from '../button';
 import CustomButton from '../customButton';
@@ -22,4 +22,30 @@ test('should fire click event', () => {
     const button = screen.getByRole('button');
     fireEvent.click(button);
     expect(onClick).toBeCalled();
+
+    // wait until the `get` request promise resolves and
+    // the component calls setState and re-renders.
+    // `waitFor` waits until the callback doesn't throw an error
+    // await waitFor(() =>
+    // // getByRole throws an error if it cannot find an element
+    //     screen.getByRole('heading'),
+    // )
 });
+
+// Snapshot testing with button
+test('should change text when mouse hovered', () => {
+    // create initial snapshot
+    const component = renderer.create(<CustomButton text='click meeee'/>);
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+
+    // snapshot when mouse hovers over button; should change text to 'hovered'
+    tree.props.onMouseEnter();
+    tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+
+    // snapshot when mouse leaves button; should change text back to original text
+    tree.props.onMouseLeave();
+    tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });

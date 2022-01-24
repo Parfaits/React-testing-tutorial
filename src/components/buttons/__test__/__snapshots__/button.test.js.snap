@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should change text when mouse hovered 1`] = `
+<div
+  className="custom-button"
+  onClick={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  role="button"
+>
+  click meeee
+</div>
+`;
+
+exports[`should change text when mouse hovered 2`] = `
+<div
+  className="custom-button"
+  onClick={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  role="button"
+>
+  hovered
+</div>
+`;
+
+exports[`should change text when mouse hovered 3`] = `
+<div
+  className="custom-button"
+  onClick={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  role="button"
+>
+  click meeee
+</div>
+`;
