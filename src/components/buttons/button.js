@@ -1,6 +1,8 @@
 function Button(props) {
     return (
-        <button>
+        <button onClick={() => {
+            props.onClick();
+        }}>
             click
         </button>
     );

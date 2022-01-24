@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import ReactDOM from 'react-dom';
 
@@ -12,6 +12,14 @@ test('should render without crashing', () => {
 
 test('should expect button to be active', () => {
     render(<Button />);
-    const allbuttons = screen.getByRole('button');
-    expect(allbuttons).not.toBeDisabled();
+    const button = screen.getByRole('button');
+    expect(button).not.toBeDisabled();
+});
+
+test('should fire click event', () => {
+    const onClick = jest.fn(); // mock function
+    render(<Button onClick={onClick}/>);
+    const button = screen.getByRole('button');
+    fireEvent.click(button);
+    expect(onClick).toBeCalled();
 });
