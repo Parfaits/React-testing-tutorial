@@ -1,14 +1,21 @@
+// import testing libraries and dependencies
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import ReactDOM from 'react-dom';
 
+// import components to test
 import Text from '../text';
 import Paragraph from '../paragraph';
 
+// test('test name', () => {
+    // Arrange - use render() to render elements into the DOM
+    // Act - use fireEvent() to simulate user actions
+    // Assert - use expect() to assert logic
+// })
+
 // check if element renders properly
 test('should render without crashing', () => {
-    const div = document.createElement('div');
-    ReactDOM.render(<Text />, div);
+    render(<Text />);
+    render(<Paragraph />);
 });
 
 // get and check all text that have 'hi' from the element and it's children

@@ -1,8 +1,8 @@
 function Button(props) {
     return (
-        <Button>
+        <button>
             click
-        </Button>
+        </button>
     );
 }
 

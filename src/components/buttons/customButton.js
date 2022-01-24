@@ -1,5 +1,7 @@
 function CustomButton(props) {
     return (
-        <div className="custom-button">{props.text}</div>
+        <div role='button' className="custom-button">{props.text}</div>
     );
 }
+
+export default CustomButton;
