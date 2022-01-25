@@ -2,6 +2,9 @@ import axios from "axios";
 
 import { registerUser, getUsers, getUser } from "../api";
 
+// mock lets you spy on the behavior of the implementations
+// So, whenever making a call via axios, jest can see the calls in action
+// see more from https://jestjs.io/docs/mock-function-api
 jest.mock('axios');
 
 const headers = {
@@ -17,6 +20,7 @@ test('should register user', async () => {
     const mockResponse = {
         status: 200
     };
+    // mockResolvedValueOnce useful to resolve different values over multiple async calls
     axios.post.mockResolvedValueOnce(mockResponse);
 
     const actual = await registerUser(userData);
@@ -35,6 +39,7 @@ test('should get all users', async () => {
     const actual = await getUsers();
 
     expect(axios.get).toHaveBeenCalledWith(`${process.env.REACT_APP_API_URL}/users`, { headers });
+    expect(actual).toEqual(userDatas);
 });
 
 test('should query user by id', async () => {
