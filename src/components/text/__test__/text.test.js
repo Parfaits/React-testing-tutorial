@@ -1,3 +1,6 @@
+// run with 'npm test' or 'yarn test'
+// with coverage 'yarn test --coverage --watchAll'
+
 // import testing libraries and dependencies
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
