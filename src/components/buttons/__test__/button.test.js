@@ -16,6 +16,7 @@ test('should expect button to be active', () => {
     expect(button).not.toBeDisabled();
 });
 
+// test the firing mechanic of a button
 test('should fire click event', () => {
     const onClick = jest.fn(); // mock function
     render(<Button onClick={onClick}/>);
@@ -32,6 +33,12 @@ test('should fire click event', () => {
     //     screen.getByRole('heading'),
     // )
 });
+
+// Also, key thing is: Do not test implementation details. This can lead to
+// a lot of false positives and false negatives. For example, we changed the function name,
+// which then bugged our program (we don't that at the moment). 
+// Then we test again to see that the tests passed.
+// Instead check the states like below. This reflects what the users sees
 
 // Snapshot testing with button
 test('should change text when mouse hovered', () => {

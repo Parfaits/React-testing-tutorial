@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly with enzyme 1`] = `
+<div
+  aria-label="text"
+  className="text"
+  role="dialog"
+>
+  <Paragraph
+    text="john"
+  />
+</div>
+`;
