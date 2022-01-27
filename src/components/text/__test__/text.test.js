@@ -27,17 +27,10 @@ test('should render without crashing', () => {
     render(<Paragraph />);
 });
 
-// get and check all text that have 'hi' from the element and it's children
-test('should render normal text container without crashing', () => {
-    render(<Text text='hi'/>);
-    // const textScreen = screen.getByRole('dialog');
-    const textScreen = screen.getAllByText('hi');
-    // expect(textScreen).toHaveTextContent('hi');
-});
-
 // note: querying by text or byRole is better than querying by any other method like id.
 // using byRole logs entire DOM for a list of roles for you if it cannot find what your looking for.
-// byRole is the goto query to use.
+// byRole is the goto query to use. It can look through the childrens to match the text using the name prop
+// even though the texts may be split
 
 // check text for Paragraph (child of Text) with 'dialog' role that has 'hello' as text
 test('should render paragraph with text', () => {
@@ -50,8 +43,19 @@ test('should render paragraph with text', () => {
     expect(textScreen).toHaveTextContent('hello');
 });
 
+// get and check all text that have 'hi' from the element and it's children
+test('should render normal text container without crashing', () => {
+    render(<Text text='hi'/>);
+    // const textScreen = screen.getByRole('dialog');
+    const textScreen = screen.getAllByText('hi');
+
+    // const snap = shallow(Text text='hi'/>);
+    // expect(toJson(snap)).toMatchSnapshot();
+});
 
 // enzyme has a bit better syntax but does the same thing as react-test-renderer
+// but react-test-renderer is more lightweight and is more focused on testing
+// the components rather than the implementation details.
 
 // snapshot testing takes a 'photo' of your component, then later on, you can test again to
 // see of that photo changed or not. If it was intentional, then we can update our photo to

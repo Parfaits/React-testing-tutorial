@@ -47,12 +47,21 @@ test('should change text when mouse hovered', () => {
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
 
-    // snapshot when mouse hovers over button; should change text to 'hovered'
+    // Note: always wrap functions that trigger state changes in a act()
+    // act() will ensure that the body will trigger state updates, once everything
+    // finishes in the body, the state changes should be flushed and the effects
+    // should be called.
+    // So, use act() whenever you have an interaction with a state update.
     act(() => {
         tree.props.onMouseEnter();
     });
     tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+
+    // bad practice:
+    // act(() => fireEvent.mouseOver(screen.getByRole('button'), {name: 'click meeee'})); // is redundant, fireEvent is already wrapped in an act()
+
+    // snapshot when mouse hovers over button; should change text to 'hovered'
 
     // snapshot when mouse leaves button; should change text back to original text
     act(() => {
